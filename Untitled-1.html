@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            color: #d63384;
+            padding: 20px;
+            position: relative;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 2;
+        }
+        .heart {
+            font-size: 50px;
+            color: red;
+            animation: heartbeat 1s infinite;
+        }
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .button {
+            background-color: #d63384;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+        }
+        .button:hover {
+            background-color: #b0276f;
+        }
+        #finalMessage {
+            display: none;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #d63384;
+            font-weight: bold;
+        }
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .floating-heart, .floating-name, .floating-emoji {
+            position: absolute;
+            font-size: 24px;
+            opacity: 0.8;
+            animation: floatUp 10s infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(100vh) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="luther.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <div class="floating-hearts"></div>
+    
+    <div class="container">
+        <h1>Happy Valentine's Day! ❤️</h1>
+        <p>From the moment we met, every day has been more beautiful with you. </p>
+        <p>We've shared laughter, memories, and so many unforgettable moments.</p>
+        <p>You are truly special to me, and I can't imagine my days without you.</p>
+        <p>Im sorry that i coulden't meet up with you for this special day, I love you alot.</p>
+        <p>I want to keep writing our story forever, filling it with joy, love, and unforgettable memories.</p>
+        <p class="heart">❤️</p>
+        <button class="button" onclick="showMessage()">The Question</button>
+        <p id="finalMessage">Will you be my girlfriend? 💖</p>
+    </div>
+    
+    <script>
+        function showMessage() {
+            document.getElementById('finalMessage').style.display = 'block';
+        }
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 6 + 6 + 's';
+            document.querySelector('.floating-hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 10000);
+        }
+        
+        function createName() {
+            const name = document.createElement('div');
+            name.classList.add('floating-name');
+            name.innerHTML = 'Aish 💖';
+            name.style.left = Math.random() * 100 + 'vw';
+            name.style.animationDuration = Math.random() * 7 + 6 + 's';
+            document.querySelector('.floating-hearts').appendChild(name);
+            setTimeout(() => name.remove(), 11000);
+        }
+        
+        function createEmoji() {
+            const emojiList = ['🎶', '💖', '🌸', '✨', '😍'];
+            const emoji = document.createElement('div');
+            emoji.classList.add('floating-emoji');
+            emoji.innerHTML = emojiList[Math.floor(Math.random() * emojiList.length)];
+            emoji.style.left = Math.random() * 100 + 'vw';
+            emoji.style.animationDuration = Math.random() * 7 + 6 + 's';
+            document.querySelector('.floating-hearts').appendChild(emoji);
+            setTimeout(() => emoji.remove(), 11000);
+        }
+        
+        setInterval(createHeart, 1000);
+        setInterval(createName, 3000);
+        setInterval(createEmoji, 4000);
+    </script>
+</body>
+</html>
